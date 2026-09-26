@@ -1,4 +1,4 @@
-﻿// AP Statistics Score-5 Interactive Portal Engine
+// AP Statistics Score-5 Interactive Portal Engine
 
 const formulasData = [
   {
@@ -345,11 +345,16 @@ function initTemplateGenerator() {
   const val2Input = document.getElementById("templateVal2");
   const outputBox = document.getElementById("templateResult");
 
+  function escapeText(str) {
+    return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+  }
+
   function updateTemplate() {
     const type = typeSelect.value;
-    const ctx = ctxInput.value || "[context of problem]";
-    const v1 = val1Input.value || "[value 1]";
-    const v2 = val2Input.value || "[value 2]";
+    const ctx = ctxInput.value ? escapeText(ctxInput.value) : "[context of problem]";
+    const v1 = val1Input.value ? escapeText(val1Input.value) : "[value 1]";
+    const rawV2 = val2Input.value ? val2Input.value.trim() : "[value 2]";
+    const v2 = escapeText(rawV2);
 
     let sentence = "";
     if (type === "ci") {
@@ -357,7 +362,12 @@ function initTemplateGenerator() {
     } else if (type === "pvalue") {
       sentence = `Assuming that the null hypothesis is true (${ctx}), there is a ${v1} probability of obtaining a sample statistic as extreme as or more extreme than observed purely by chance.`;
     } else if (type === "slope") {
-      sentence = `For each additional 1 unit increase in ${v1}, the predicted ${ctx} increases by approximately ${v2}.`;
+      const numV2 = parseFloat(rawV2);
+      if (!isNaN(numV2) && numV2 < 0) {
+        sentence = `For each additional 1 unit increase in ${v1}, the predicted ${ctx} decreases by approximately ${Math.abs(numV2)}.`;
+      } else {
+        sentence = `For each additional 1 unit increase in ${v1}, the predicted ${ctx} increases by approximately ${v2}.`;
+      }
     } else if (type === "r2") {
       sentence = `Approximately ${v1}% of the variation in ${ctx} is accounted for by the linear relationship with ${v2}.`;
     }
