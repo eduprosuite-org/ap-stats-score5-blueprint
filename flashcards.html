@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -48,16 +48,23 @@
 </head>
 <body>
   <header>
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <span>📊 AP® Statistics Master Review</span>
-        <span class="logo-badge">2027 EXAM READY</span>
+    <div class="container nav-container" style="flex-wrap:wrap; height:auto; padding:12px 24px; gap:12px;">
+      <a href="index.html" class="logo" style="text-decoration:none;">
+        <span style="font-size: 1.15rem; font-weight: 800; color: #0284c7;">🎓 EduPro Suite</span>
+        <span style="color: var(--text-muted); font-weight: 600; font-size: 0.95rem;">| Book Companion</span>
+        <span class="logo-badge" style="background:#d97706; color:#fff; font-size:0.75rem; padding:3px 8px; border-radius:4px; margin-left:6px;">⚡ 3D Flashcards</span>
       </a>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <a href="index.html" style="color:var(--text-color); text-decoration:none; font-size:0.9rem; font-weight:600;">← Companion Home</a>
-        <a href="practice-exams.html" style="color:#0284c7; text-decoration:none; font-size:0.9rem; font-weight:700; background:rgba(2,132,199,0.1); padding:6px 12px; border-radius:6px;">🎯 Practice Exams Simulator</a>
+      
+      <!-- Menubar with ALL Exams -->
+      <nav style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <a href="index.html" class="nav-link-btn">📊 AP® Statistics</a>
+        <a href="calculus.html" class="nav-link-btn">∫dx AP® Calculus</a>
+        <a href="introductory-statistics.html" class="nav-link-btn">📈 Intro Statistics</a>
+        <a href="books-catalog.html" class="nav-link-btn" style="color:#059669; font-weight:700;">📚 All Books Catalog</a>
+        <a href="practice-exams.html" class="nav-link-btn">🎯 Practice Exams</a>
+        <a href="flashcards.html" class="nav-link-btn highlight" style="color:#d97706;">⚡ Flashcards</a>
         <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
-      </div>
+      </nav>
     </div>
   </header>
 

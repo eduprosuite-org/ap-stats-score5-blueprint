@@ -6,22 +6,27 @@
   <title>AP Statistics Score-5 Blueprint | Interactive Student Portal</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-exam="ap-statistics">
 
   <!-- Header -->
   <header>
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <span>📊 AP® Statistics Master Review</span>
-        <span class="logo-badge">2027 EXAM READY</span>
+    <div class="container nav-container" style="flex-wrap:wrap; height:auto; padding:12px 24px; gap:12px;">
+      <a href="index.html" class="logo" style="text-decoration:none;">
+        <span style="font-size: 1.15rem; font-weight: 800; color: #0284c7;">🎓 EduPro Suite</span>
+        <span style="color: var(--text-muted); font-weight: 600; font-size: 0.95rem;">| Book Companion</span>
+        <span class="logo-badge" style="background:#0284c7; color:#fff; font-size:0.75rem; padding:3px 8px; border-radius:4px; margin-left:6px;">📊 AP® Statistics</span>
       </a>
-      <div style="display:flex; gap:14px; align-items:center;">
-        <a href="books-catalog.html" style="color:#059669; text-decoration:none; font-size:0.95rem; font-weight:700; background:rgba(16,185,129,0.12); padding:6px 12px; border-radius:6px;">📚 All Books Catalog</a>
-        <a href="flashcards.html" style="color:#d97706; text-decoration:none; font-size:0.95rem; font-weight:700; background:rgba(245,158,11,0.12); padding:6px 12px; border-radius:6px;">⚡ 75 Flashcards</a>
-        <a href="practice-exams.html" style="color:#0284c7; text-decoration:none; font-size:0.95rem; font-weight:700; background:rgba(2,132,199,0.1); padding:6px 12px; border-radius:6px;">🎯 Practice Exams Simulator</a>
-        <a href="calculus.html" style="color:var(--text-color); text-decoration:none; font-size:0.9rem; font-weight:600;">∫dx AP® Calculus Portal</a>
+      
+      <!-- Menubar with ALL Exams -->
+      <nav style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <a href="index.html" class="nav-link-btn highlight">📊 AP® Statistics</a>
+        <a href="calculus.html" class="nav-link-btn">∫dx AP® Calculus</a>
+        <a href="introductory-statistics.html" class="nav-link-btn">📈 Intro Statistics</a>
+        <a href="books-catalog.html" class="nav-link-btn" style="color:#059669; font-weight:700;">📚 All Books Catalog</a>
+        <a href="practice-exams.html#ap-statistics-practice-exams" class="nav-link-btn">🎯 Practice Exams</a>
+        <a href="flashcards.html#ap-statistics-flashcards" class="nav-link-btn" style="color:#d97706;">⚡ Flashcards</a>
         <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
-      </div>
+      </nav>
     </div>
   </header>
 
@@ -39,17 +44,57 @@
     </div>
   </section>
 
-  <!-- Main Portal -->
-  <main class="container" style="margin-top: 30px;">
-    
-    <!-- Tab Navigation -->
-    <nav class="tabs-nav">
-      <button class="tab-btn active" data-tab="formulas">📚 Formula Cheat Sheets</button>
-      <button class="tab-btn" data-tab="wizard">🧭 Inference Test Wizard</button>
-      <button class="tab-btn" data-tab="generator">✍️ FRQ Sentence Generator</button>
-      <button class="tab-btn" data-tab="quiz">📝 Diagnostic Drill</button>
-      <button class="tab-btn" data-tab="books">📖 Book Series & Downloads</button>
-    </nav>
+  <!-- Main Portal Layout with Sticky Resources Sidebar -->
+  <main class="container">
+    <div class="portal-layout">
+      
+      <!-- Sticky Resources Sidebar -->
+      <aside class="resources-sidebar">
+        <div class="sidebar-title">Exam Resources</div>
+        <div class="sidebar-exam-badge">📊 AP Statistics Hub</div>
+        <nav class="sidebar-nav">
+          <a href="#ap-statistics-formulas" class="sidebar-link active" data-tab="formulas">
+            <span>📚 Formula Sheets</span>
+            <span class="sidebar-link-badge">9 Units</span>
+          </a>
+          <a href="#ap-statistics-wizard" class="sidebar-link" data-tab="wizard">
+            <span>🧭 Inference Wizard</span>
+            <span class="sidebar-link-badge">Tests</span>
+          </a>
+          <a href="#ap-statistics-frq" class="sidebar-link" data-tab="generator">
+            <span>✍️ FRQ Builder</span>
+            <span class="sidebar-link-badge">Rubrics</span>
+          </a>
+          <a href="#ap-statistics-drill" class="sidebar-link" data-tab="quiz">
+            <span>📝 Diagnostic Drill</span>
+            <span class="sidebar-link-badge">MCQ</span>
+          </a>
+          <a href="flashcards.html#ap-statistics-flashcards" class="sidebar-link">
+            <span>⚡ 75 3D Flashcards</span>
+            <span class="sidebar-link-badge">Cards</span>
+          </a>
+          <a href="practice-exams.html#ap-statistics-practice-exams" class="sidebar-link">
+            <span>🎯 Practice Exams</span>
+            <span class="sidebar-link-badge">Bluebook</span>
+          </a>
+          <div class="sidebar-divider"></div>
+          <a href="#ap-statistics-books" class="sidebar-link" data-tab="books">
+            <span>📖 Series Books & PDFs</span>
+            <span class="sidebar-link-badge">KDP</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Portal Content -->
+      <div class="portal-content">
+        <!-- Tab Navigation (Mobile/Fallback) -->
+        <nav class="tabs-nav">
+          <button class="tab-btn active" data-tab="formulas">📚 Formulas</button>
+          <button class="tab-btn" data-tab="wizard">🧭 Inference Wizard</button>
+          <button class="tab-btn" data-tab="generator">✍️ FRQ Builder</button>
+          <button class="tab-btn" data-tab="quiz">📝 Diagnostic Drill</button>
+          <button class="tab-btn" data-tab="books">📖 Books & Downloads</button>
+        </nav>
 
     <!-- TAB 1: FORMULAS -->
     <section class="tab-pane active" id="formulas">
@@ -174,8 +219,9 @@
         </div>
       </div>
     </section>
-
-  </main>
+  </div> <!-- End portal-content -->
+</div> <!-- End portal-layout -->
+</main>
 
   <!-- Footer -->
   <footer>

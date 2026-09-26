@@ -163,21 +163,52 @@ document.addEventListener("DOMContentLoaded", () => {
   renderQuiz();
 });
 
-// Tabs
+// Tabs & Hash Routing Engine
 function initTabs() {
   const buttons = document.querySelectorAll(".tab-btn");
+  const sidebarLinks = document.querySelectorAll(".sidebar-link[data-tab]");
   const panes = document.querySelectorAll(".tab-pane");
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      buttons.forEach(b => b.classList.remove("active"));
-      panes.forEach(p => p.classList.remove("active"));
+  function switchTab(tabId, updateHash = true) {
+    buttons.forEach(b => b.classList.toggle("active", b.dataset.tab === tabId));
+    sidebarLinks.forEach(l => l.classList.toggle("active", l.dataset.tab === tabId));
+    panes.forEach(p => p.classList.toggle("active", p.id === tabId));
 
-      btn.classList.add("active");
-      const target = document.getElementById(btn.dataset.tab);
-      if (target) target.classList.add("active");
+    if (updateHash) {
+      const examPrefix = document.body.dataset.exam || "ap-statistics";
+      history.pushState(null, "", `#${examPrefix}-${tabId}`);
+    }
+  }
+
+  function handleHash() {
+    const rawHash = window.location.hash.replace("#", "");
+    if (!rawHash) return;
+    
+    // Check if hash matches a tab pane ID directly or with exam prefix
+    for (const pane of panes) {
+      if (rawHash === pane.id || rawHash.endsWith("-" + pane.id) || rawHash.includes(pane.id)) {
+        switchTab(pane.id, false);
+        pane.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+  });
+
+  sidebarLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      if (link.dataset.tab) {
+        e.preventDefault();
+        switchTab(link.dataset.tab);
+      }
     });
   });
+
+  window.addEventListener("hashchange", handleHash);
+  handleHash();
 }
 
 // Theme Toggle

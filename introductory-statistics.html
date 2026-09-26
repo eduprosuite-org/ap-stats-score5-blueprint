@@ -65,22 +65,27 @@
     }
   </style>
 </head>
-<body>
+<body data-exam="intro-stats">
 
   <!-- Header -->
   <header>
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <span>📈 Introductory Statistics College Mastery</span>
-        <span class="logo-badge">2027 COMPREHENSIVE</span>
+    <div class="container nav-container" style="flex-wrap:wrap; height:auto; padding:12px 24px; gap:12px;">
+      <a href="introductory-statistics.html" class="logo" style="text-decoration:none;">
+        <span style="font-size: 1.15rem; font-weight: 800; color: #0284c7;">🎓 EduPro Suite</span>
+        <span style="color: var(--text-muted); font-weight: 600; font-size: 0.95rem;">| Book Companion</span>
+        <span class="logo-badge" style="background:#0284c7; color:#fff; font-size:0.75rem; padding:3px 8px; border-radius:4px; margin-left:6px;">📈 Introductory Statistics</span>
       </a>
-      <div style="display:flex; gap:14px; align-items:center;">
-        <a href="books-catalog.html" style="color:#059669; text-decoration:none; font-size:0.9rem; font-weight:700; background:rgba(16,185,129,0.12); padding:6px 12px; border-radius:6px;">📚 All Books Catalog</a>
-        <a href="index.html" style="color:var(--text-color); text-decoration:none; font-size:0.9rem; font-weight:600;">📊 AP® Statistics</a>
-        <a href="calculus.html" style="color:var(--text-color); text-decoration:none; font-size:0.9rem; font-weight:600;">∫dx AP® Calculus</a>
-        <a href="practice-exams.html" style="color:#0284c7; text-decoration:none; font-size:0.95rem; font-weight:700; background:rgba(2,132,199,0.1); padding:6px 12px; border-radius:6px;">🎯 Practice Exams</a>
+      
+      <!-- Menubar with ALL Exams -->
+      <nav style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <a href="index.html" class="nav-link-btn">📊 AP® Statistics</a>
+        <a href="calculus.html" class="nav-link-btn">∫dx AP® Calculus</a>
+        <a href="introductory-statistics.html" class="nav-link-btn highlight">📈 Intro Statistics</a>
+        <a href="books-catalog.html" class="nav-link-btn" style="color:#059669; font-weight:700;">📚 All Books Catalog</a>
+        <a href="practice-exams.html#intro-stats-practice-exams" class="nav-link-btn">🎯 Practice Exams</a>
+        <a href="flashcards.html#intro-stats-flashcards" class="nav-link-btn" style="color:#d97706;">⚡ Flashcards</a>
         <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
-      </div>
+      </nav>
     </div>
   </header>
 
@@ -91,8 +96,45 @@
       <p>Official open web companion for undergraduate college students, AP Statistics students, and instructors. Includes interactive decision trees, formula calculators, software output interpreters (R, Python, Excel), and exam practice modules.</p>
     </div>
 
-    <!-- 3 Books Overview -->
-    <section>
+    <!-- Main Portal Layout with Sticky Resources Sidebar -->
+    <div class="portal-layout">
+      
+      <!-- Sticky Resources Sidebar -->
+      <aside class="resources-sidebar">
+        <div class="sidebar-title">Exam Resources</div>
+        <div class="sidebar-exam-badge">📈 College Stats Hub</div>
+        <nav class="sidebar-nav">
+          <a href="#intro-stats-books" class="sidebar-link active">
+            <span>📚 3-Volume Textbooks</span>
+            <span class="sidebar-link-badge">Books</span>
+          </a>
+          <a href="#intro-stats-decision-tree" class="sidebar-link">
+            <span>🧭 Inference Test Tree</span>
+            <span class="sidebar-link-badge">Matrix</span>
+          </a>
+          <a href="#intro-stats-formulas" class="sidebar-link">
+            <span>📊 Core Formulas & Rules</span>
+            <span class="sidebar-link-badge">Cheat Sheet</span>
+          </a>
+          <a href="#intro-stats-software" class="sidebar-link">
+            <span>💻 Software Interpretation</span>
+            <span class="sidebar-link-badge">R / Python</span>
+          </a>
+          <a href="practice-exams.html#intro-stats-practice-exams" class="sidebar-link">
+            <span>🎯 Practice Exams Simulator</span>
+            <span class="sidebar-link-badge">College</span>
+          </a>
+          <a href="flashcards.html#intro-stats-flashcards" class="sidebar-link">
+            <span>⚡ Concept Flashcards</span>
+            <span class="sidebar-link-badge">Cards</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Portal Content -->
+      <div class="portal-content">
+        <!-- 3 Books Overview -->
+        <section id="intro-stats-books">
       <h2 style="font-size: 1.6rem; color: #0f172a; margin-bottom: 8px;">📚 The 3-Volume College Mastery Series</h2>
       <p style="color: #64748b; margin-bottom: 20px;">Complete 300–500 page textbooks and workbooks engineered for semester-long course mastery and top exam performance.</p>
 
@@ -127,7 +169,7 @@
     </section>
 
     <!-- Interactive Inference Decision Tool -->
-    <section style="margin-top: 40px;" class="card">
+    <section style="margin-top: 40px;" class="card" id="intro-stats-decision-tree">
       <h2>🧭 College Inference Test Decision Engine</h2>
       <p style="color: #64748b;">Select your research study characteristics below to determine the appropriate statistical test and verification conditions:</p>
 
@@ -171,7 +213,7 @@
     </section>
 
     <!-- Quick Formula Vault -->
-    <section style="margin-top: 35px;" class="card">
+    <section style="margin-top: 35px;" class="card" id="intro-stats-formulas">
       <h2>⚡ Rapid Formula & Parameter Vault</h2>
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:15px; margin-top:15px;">
         <div class="decision-step">
@@ -196,6 +238,8 @@
         </div>
       </div>
     </section>
+  </div> <!-- End portal-content -->
+</div> <!-- End portal-layout -->
 
     <!-- Legal & Nominative Fair Use -->
     <footer style="margin-top: 50px; padding: 25px 0; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 0.85rem; text-align: center;">
